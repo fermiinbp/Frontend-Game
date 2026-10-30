@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tienda de videojuegos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <header class="cabecera">
+        <div class="cabecera__interior">
+            <a class="logo" href="./">GameVault</a>
+
+            <form class="buscador" id="formBusqueda" role="search">
+                <input type="search" id="busqueda" placeholder="Buscar un juego" aria-label="Buscar un juego">
+                <select id="filtroGenero" aria-label="Filtrar por género">
+                    <option value="">Todos los géneros</option>
+                    <option value="accion">Acción</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="rpg">RPG</option>
+                    <option value="estrategia">Estrategia</option>
+                    <option value="deportes">Deportes</option>
+                    <option value="indie">Indie</option>
+                </select>
+                <button type="submit">Buscar</button>
+            </form>
+
+            <div class="sesion" id="sesion"></div>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <section class="destacado" aria-labelledby="tituloDestacado">
+            <h1 id="tituloDestacado">Descubre tu próximo juego</h1>
+            <p>Catálogo cargado desde tu API. Si ves los juegos aquí, el CORS está bien configurado.</p>
+        </section>
+
+        <div class="barra">
+            <h2>Catálogo</h2>
+            <p id="estado" class="estado" role="status" aria-live="polite"></p>
+        </div>
+
+        <section id="rejilla" class="rejilla" aria-label="Lista de videojuegos"></section>
+
+        <nav class="paginacion" aria-label="Paginación">
+            <button id="anterior" type="button">Anterior</button>
+            <span id="paginaActual"></span>
+            <button id="siguiente" type="button">Siguiente</button>
+        </nav>
+    </main>
+
+    <footer class="pie">
+        <p>Proyecto de clase · API en <code id="urlApi"></code></p>
+    </footer>
+
+    <dialog id="dialogoJuego" class="dialogo dialogo--ancho">
+        <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
+        <h2 id="juegoTitulo"></h2>
+        <p id="juegoInfo" class="juego-info"></p>
+
+        <h3>Reseñas</h3>
+        <ul id="listaResenas" class="resenas"></ul>
+
+        <form id="formResena" class="form" hidden>
+            <h3>Escribe tu reseña</h3>
+            <label>Puntuacion
+                <select id="resenaEstrellas" required>
+                    <option value="5">5 estrellas</option>
+                    <option value="4">4 estrellas</option>
+                    <option value="3">3 estrellas</option>
+                    <option value="2">2 estrellas</option>
+                    <option value="1">1 estrella</option>
+                </select>
+            </label>
+            <label>Tu opinion
+                <textarea id="resenaTexto" rows="3" required minlength="3"></textarea>
+            </label>
+            <button type="submit" class="boton-principal">Publicar reseña</button>
+        </form>
+        <p id="avisoLogin" class="aviso" hidden>Inicia sesión para escribir una reseña.</p>
+    </dialog>
+
+    <!-- Login -->
+    <dialog id="dialogoLogin" class="dialogo">
+        <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
+        <h2>Iniciar sesion</h2>
+        <form id="formLogin" class="form">
+            <label>Email
+                <input type="email" id="loginEmail" required autocomplete="email">
+            </label>
+            <label>Contraseña
+                <input type="password" id="loginPassword" required autocomplete="current-password">
+            </label>
+            <p id="loginError" class="estado error" role="alert"></p>
+            <button type="submit" class="boton-principal">Entrar</button>
+        </form>
+    </dialog>
+</body>
+</html>
