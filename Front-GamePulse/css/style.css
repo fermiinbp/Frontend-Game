@@ -41,7 +41,7 @@ code { background: var(--panel); padding: 2px 6px; border-radius: var(--radio); 
 }
 .logo { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: .5px; }
 
-.buscador { display: flex; gap: .5rem; flex: 1; min-width: 260px; }
+.buscador { display: flex; gap: .5rem; flex: 1; min-width: 260px; flex-wrap: wrap; }
 .buscador input { flex: 1; min-width: 0; }
 
 input, select, textarea {
