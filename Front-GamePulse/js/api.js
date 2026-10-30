@@ -21,6 +21,24 @@ export function listarGames(parametros) {
     return pedir(`/games?${query}`);
 }
 
+export function obtenerGame(id) {
+    return pedir(`/games/${id}`);
+}
+
+// Datos de Steam guardados en GameStat
+export function trending(limite = 5) {
+    return pedir(`/games/trending?limit=${limite}`);
+}
+
+export function historialDe(gameId) {
+    return pedir(`/games/${gameId}/stats`);
+}
+
+// Solo ADMIN: pide a Steam los datos de todos los juegos ahora mismo
+export function sincronizarSteam() {
+    return pedir("/admin/sync", { method: "POST" });
+}
+
 export function listarGeneros() {
     return pedir("/games/genres");
 }

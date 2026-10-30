@@ -152,3 +152,43 @@ button:disabled { opacity: .4; cursor: not-allowed; }
 
 /* Que "hidden" oculte siempre, aunque la clase tenga display: flex */
 [hidden] { display: none !important; }
+
+/* ---------- Datos de Steam ---------- */
+
+.descuento { background: var(--verde-fondo); color: var(--verde); padding: 0 6px; margin-right: 6px; border-radius: var(--radio); font-weight: 700; }
+
+.jugadores { margin: 0; font-size: .85rem; color: var(--acento); display: flex; align-items: center; gap: .4rem; }
+.jugadores__punto { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 6px var(--verde); flex: none; }
+
+/* Más jugados ahora */
+.trending { margin: 1.5rem 0; }
+.trending__cabecera { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.trending__cabecera h2 { margin: 0; }
+.trending__fecha { font-size: .85rem; color: var(--texto-suave); }
+.trending__lista { list-style: none; padding: 0; margin: .75rem 0 0; display: flex; flex-direction: column; gap: .4rem; }
+.trending__item {
+    width: 100%; display: grid; grid-template-columns: 2rem 92px 1fr auto; align-items: center; gap: .75rem;
+    background: var(--panel); padding: .4rem .75rem; text-align: left; color: var(--texto); border-radius: var(--radio);
+}
+.trending__item:hover:not(:disabled) { background: var(--panel-claro); }
+.trending__item img { width: 92px; aspect-ratio: 460 / 215; object-fit: cover; border-radius: 2px; display: block; }
+.trending__puesto { font-size: 1.25rem; font-weight: 700; color: var(--acento); text-align: center; }
+.trending__nombre { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trending__jugadores { color: var(--verde); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+
+@media (max-width: 600px) {
+    .trending__item { grid-template-columns: 1.5rem 1fr auto; }
+    .trending__item img { display: none; }
+}
+
+/* Detalle del juego */
+.steam { margin: .5rem 0 1rem; }
+.steam__datos { display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-end; }
+.steam__datos > div { display: flex; flex-direction: column; gap: .25rem; }
+.steam__valor { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
+.steam__etiqueta { font-size: .8rem; color: var(--texto-suave); }
+.steam__grafica { width: 100%; height: 60px; display: block; margin-top: .75rem; background: var(--panel); border-radius: var(--radio); }
+.steam__linea { fill: none; stroke: var(--acento); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.steam__area { fill: rgba(102, 192, 244, .15); stroke: none; }
+.steam__rango { display: flex; justify-content: space-between; margin: .25rem 0 0; font-size: .75rem; color: var(--texto-suave); }
+.steam__nota { margin: .4rem 0 0; font-size: .8rem; color: var(--texto-suave); }

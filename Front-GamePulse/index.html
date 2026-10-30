@@ -36,7 +36,15 @@
     <main class="contenedor">
         <section class="destacado" aria-labelledby="tituloDestacado">
             <h1 id="tituloDestacado">Descubre tu próximo juego</h1>
-            <p>Catálogo cargado desde tu API. Si ves los juegos aquí, el CORS está bien configurado.</p>
+            <p>Precios y jugadores en directo desde Steam, guardados en nuestra API para ver cómo cambian con el tiempo.</p>
+        </section>
+
+        <section id="trending" class="trending" aria-labelledby="tituloTrending" hidden>
+            <div class="trending__cabecera">
+                <h2 id="tituloTrending">Más jugados ahora en Steam</h2>
+                <span id="trendingFecha" class="trending__fecha"></span>
+            </div>
+            <ol id="listaTrending" class="trending__lista"></ol>
         </section>
 
         <section id="panelEstadisticas" class="destacado" hidden>
@@ -66,6 +74,7 @@
         <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
         <h2 id="juegoTitulo"></h2>
         <p id="juegoInfo" class="juego-info"></p>
+        <div id="juegoSteam" class="steam"></div>
 
         <h3>Reseñas</h3>
         <ul id="listaResenas" class="resenas"></ul>
