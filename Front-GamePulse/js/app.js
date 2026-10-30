@@ -1,5 +1,5 @@
 import { API_URL } from "./config.js";
-import { listarGames, listarGeneros, resenasDe, escribirResena, login, logout, usuarioActual } from "./api.js";
+import { listarGames, listarGeneros, resenasDe, escribirResena, login, logout, usuarioActual, estadisticasResenas } from "./api.js";
 
 // ESTADO
 const estado = { pagina: 1, limite: 12, filtros: {}, juegoAbierto: null };
@@ -104,6 +104,21 @@ $("#formBusqueda").addEventListener("submit", evento => {
     $(id).addEventListener("change", aplicarFiltros)
 );
 
+// ESTADÍSTICAS (solo ANALYST y ADMIN)
+async function cargarEstadisticas() {
+    const usuario = usuarioActual();
+    const puedeVer = usuario && ["ANALYST", "ADMIN"].includes(usuario.role);
+    $("#panelEstadisticas").hidden = !puedeVer;
+    if (!puedeVer) return;
+
+    try {
+        const { positivas, negativas } = await estadisticasResenas();
+        $("#textoEstadisticas").textContent = `${positivas} reseñas positivas · ${negativas} reseñas negativas`;
+    } catch (error) {
+        $("#textoEstadisticas").textContent = error.message;
+    }
+}
+
 // SESIÓN
 function pintarSesion() {
     const usuario = usuarioActual();
@@ -119,6 +134,8 @@ function pintarSesion() {
     $("#avisoLogin").textContent = usuario
         ? "Tu rol no permite escribir reseñas."
         : "Inicia sesión para escribir una reseña.";
+
+    cargarEstadisticas();
 }
 
 $("#sesion").addEventListener("click", evento => {
@@ -146,6 +163,15 @@ $("#formLogin").addEventListener("submit", async evento => {
         $("#loginError").textContent = error.message;
     }
 });
+
+// USUARIOS DE PRUEBA (los de scripts/users.json, todos con la misma contraseña)
+document.querySelectorAll("[data-email]").forEach(boton =>
+    boton.addEventListener("click", () => {
+        $("#loginEmail").value = boton.dataset.email;
+        $("#loginPassword").value = "TestPass123!";
+        $("#formLogin").requestSubmit();
+    })
+);
 
 // RESEÑAS
 function estrellas(n) {

@@ -13,7 +13,6 @@
             <a class="logo" href="./">GamePulse</a>
 
             <form class="buscador" id="formBusqueda" role="search">
-                <input type="search" id="busqueda" name="buscar" placeholder="Buscar un juego" aria-label="Buscar un juego">
                 <select id="filtroGenero" name="genero" aria-label="Filtrar por género">
                     <option value="">Todos los géneros</option>
                 </select>
@@ -28,7 +27,6 @@
                     <option value="-releaseDate">Más recientes</option>
                     <option value="releaseDate">Más antiguos</option>
                 </select>
-                <button type="submit">Buscar</button>
             </form>
 
             <div class="sesion" id="sesion"></div>
@@ -39,6 +37,11 @@
         <section class="destacado" aria-labelledby="tituloDestacado">
             <h1 id="tituloDestacado">Descubre tu próximo juego</h1>
             <p>Catálogo cargado desde tu API. Si ves los juegos aquí, el CORS está bien configurado.</p>
+        </section>
+
+        <section id="panelEstadisticas" class="destacado" hidden>
+            <h2>Estadísticas de reseñas</h2>
+            <p id="textoEstadisticas"></p>
         </section>
 
         <div class="barra">
@@ -91,6 +94,13 @@
     <dialog id="dialogoLogin" class="dialogo">
         <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
         <h2>Iniciar sesión</h2>
+        <div class="usuarios-prueba">
+            <p>Entrar como:</p>
+            <button type="button" data-email="carlos.dev@example.com">carlos_dev (ADMIN)</button>
+            <button type="button" data-email="lucia.gamer@example.com">lucia_gamer (ANALYST)</button>
+            <button type="button" data-email="miguel23@example.com">miguel_23 (USER)</button>
+            <button type="button" data-email="sara.codes@example.com">sara_codes (USER)</button>
+        </div>
         <form id="formLogin" class="form">
             <label>Email
                 <input type="email" id="loginEmail" name="email" required autocomplete="email">

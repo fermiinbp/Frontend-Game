@@ -146,3 +146,9 @@ button:disabled { opacity: .4; cursor: not-allowed; }
     * { transition: none !important; }
     .tarjeta:hover { transform: none; }
 }
+/* Botones de usuarios de prueba en el login */
+.usuarios-prueba { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.usuarios-prueba p { width: 100%; margin: 0; color: var(--texto-suave); font-size: .9rem; }
+
+/* Que "hidden" oculte siempre, aunque la clase tenga display: flex */
+[hidden] { display: none !important; }

@@ -36,6 +36,11 @@ export function escribirResena(gameId, rating, comment) {
     });
 }
 
+// Solo ANALYST y ADMIN. Devuelve { positivas, negativas }
+export function estadisticasResenas() {
+    return pedir("/reviews/stats");
+}
+
 export async function login(email, password) {
     const dato = await pedir("/auth/login", {
         method: "POST",
